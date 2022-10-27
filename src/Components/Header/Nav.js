@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../Context/UseContext';
+
 
 const Nav = () => {
+const {user,logOut} = useContext(AuthContext)
     return (
         <div>
 <div className="navbar bg-base-100">
@@ -16,15 +19,18 @@ const Nav = () => {
       <li><Link to='/course'>Course</Link></li>
       <li><Link to='/login'>Login</Link></li>
       <li><Link to='/register' >Register</Link></li>
+      <li><Link to='/blog' >Blog</Link></li>
+
       </ul>
     </div>
-    <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
+    <a className="btn btn-ghost normal-case text-xl">E-learn</a>
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal p-0">
       <li><Link to='/'>Home</Link></li>
       <li><Link to='/about'>About</Link></li>
-      <li><Link to='/course'>Course</Link></li>
+      <li><Link to='/courseinfo'>Course</Link></li>
+      <li><Link to='/blog' >Blog</Link></li>
       <li></li>
      
      
@@ -32,11 +38,30 @@ const Nav = () => {
   </div>
   <div className="navbar-end hidden lg:flex">
   <ul className="menu menu-horizontal p-0  ">
-  <li><Link to='/login'>Login</Link></li>
+   {
+        user?.uid ?
+          <button onClick={logOut} >Sign Out</button>
+          : 
+          <>
+           <li><Link to='/login'>Login</Link></li>
       <li><Link to='/register' >Register</Link></li>
-  </ul>
+          </>
+  } 
+          
+
+      
+      
+
+  
+       <li>{user?.photoURL ?<div className="avatar placeholder">
+                              <div className="bg-neutral-focus text-neutral-content rounded-full w-12">
+                              <img src={user?.photoURL} />
+                            </div>
+                            </div>
+                                :<span></span>
+                            }</li>
+  </ul> 
  
-    {/* <a className="btn">Get started</a> */}
   </div>
 </div>
    </div>
