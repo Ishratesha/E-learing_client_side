@@ -10,6 +10,8 @@ import Coursedetails from '../Components/Course/Coursedetails';
 import Courseinfo from '../CourseLayout/Courseinfo';
 
 import CourseOne from '../Components/Course/CourseOne';
+import Checkout from '../Components/Checkout/Checkout';
+import Privaterout from '../Components/Prouter/Privaterout';
 
 
 
@@ -36,11 +38,11 @@ import CourseOne from '../Components/Course/CourseOne';
                 {
                     path: '/category/:id',
                     element: <Coursedetails></Coursedetails>,
-                    loader: ({params}) => fetch(`http://localhost:5000/category/${params.id}`)
+                    loader: ({params}) => fetch(`https://assg10-server.vercel.app/category/${params.id}`)
                 },
                 {
                     path:'/course/:_id',
-                    loader:({params})=>fetch(`http://localhost:5000/course/${params._id}`),
+                    loader:({params})=>fetch(`https://assg10-server.vercel.app/course/${params._id}`),
                     element:<CourseOne></CourseOne>
                     // <CourseMap>
                 },
@@ -51,6 +53,10 @@ import CourseOne from '../Components/Course/CourseOne';
                 {
                     path:'/courseinfo',
                     element:<Courseinfo></Courseinfo>
+                },
+                {
+                    path:'/checkout',
+                    element:<Privaterout><Checkout></Checkout></Privaterout>
                 },
             ]
 
