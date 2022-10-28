@@ -29,7 +29,7 @@ const {user,logOut} = useContext(AuthContext)
     <ul className="menu menu-horizontal p-0">
       <li><Link to='/'>Home</Link></li>
       <li><Link to='/about'>About</Link></li>
-      <li><Link to='/courseinfo'>Course</Link></li>
+      <li><Link to='/category/:id'>Course</Link></li>
       <li><Link to='/blog' >Blog</Link></li>
       <li></li>
      
@@ -45,6 +45,12 @@ const {user,logOut} = useContext(AuthContext)
           <>
            <li><Link to='/login'>Login</Link></li>
       <li><Link to='/register' >Register</Link></li>
+      <li><div className="form-control">
+  <label className="label cursor-pointer">
+   
+    <input type="checkbox" className="toggle toggle-primary" checked />
+  </label>
+</div></li>
           </>
   } 
           

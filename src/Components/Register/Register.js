@@ -1,11 +1,11 @@
-import { GithubAuthProvider } from 'firebase/auth';
+
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Context/UseContext';
 
   
 const Register = () => {
-  const { createUser,signInWithGoogle,signInWithGitHub } = useContext(AuthContext);
+  const { createUser } = useContext(AuthContext);
   const handleSubmit = event => {
     event.preventDefault();
 
@@ -25,35 +25,8 @@ const Register = () => {
         })
        
 }
-const handleGoogleSignIn = () => {
-  signInWithGoogle()
-  .then( result => {
-      const user = result.user;
-      console.log(user);
-  })
-  .catch(error => console.error(error));
-}
-const handelGitHubLogin =()=>{
-    signInWithGitHub()
-    .then((result) => {
-        // This gives you a GitHub Access Token. You can use it to access the GitHub API.
-        const credential = GithubAuthProvider.credentialFromResult(result);
-        const token = credential.accessToken;
-    
-        // The signed-in user info.
-        const user = result.user;
-        // ...
-      }).catch((error) => {
-        // Handle Errors here.
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        // The email of the user's account used.
-        const email = error.customData.email;
-        // The AuthCredential type that was used.
-        const credential = GithubAuthProvider.credentialFromError(error);
-        // ...
-      });
-}
+
+
     return (
     <div>
 
@@ -98,8 +71,8 @@ const handelGitHubLogin =()=>{
                             </div>
                            
                         </form>
-                        <button onClick={handelGitHubLogin} className="btn btn-outline btn-success">Github</button>
-                        <button onClick={handleGoogleSignIn} className="btn btn-outline btn-success">Google</button>
+                       
+                        
                     </div>
                 </div>
             </div>

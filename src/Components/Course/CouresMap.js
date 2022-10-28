@@ -5,7 +5,7 @@ import Course from './Course';
 const CouresMap = () => {
     const course = useLoaderData()
     return (
-        <div>
+        <div className='grid-cols-3'>
             {
             course.map(course=><Course key={course._id}
             course={course}

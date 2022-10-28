@@ -70,7 +70,7 @@ const Features = () => {
   </div>
 </div>
 <div>
-    <Priceing></Priceing>
+   
 </div>
 
         </div>

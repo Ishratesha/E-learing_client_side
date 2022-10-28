@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Context/UseContext';
-
+import { GithubAuthProvider } from 'firebase/auth';
 
 const Login = () => {
 
-    const { signIn } = useContext(AuthContext);
+    const { signIn,signInWithGoogle,signInWithGitHub } = useContext(AuthContext);
     const navigate = useNavigate()
 
     const handleSubmit = event => {
@@ -24,6 +24,36 @@ const Login = () => {
             })
             .catch(error => console.error(error))
 
+    }
+    const handleGoogleSignIn = () => {
+        signInWithGoogle()
+        .then( result => {
+            const user = result.user;
+            console.log(user);
+        })
+        .catch(error => console.error(error));
+      }
+      //github
+      const handelGitHubLogin =()=>{
+        signInWithGitHub()
+        .then((result) => {
+            // This gives you a GitHub Access Token. You can use it to access the GitHub API.
+            const credential = GithubAuthProvider.credentialFromResult(result);
+            const token = credential.accessToken;
+        
+            // The signed-in user info.
+            const user = result.user;
+            // ...
+          }).catch((error) => {
+            // Handle Errors here.
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            // The email of the user's account used.
+            const email = error.customData.email;
+            // The AuthCredential type that was used.
+            const credential = GithubAuthProvider.credentialFromError(error);
+            // ...
+          });
     }
     return (
         <div>
@@ -53,7 +83,10 @@ const Login = () => {
                                 <button className="btn btn-primary">Login</button>
                             </div>
                         </form>
+                        <button onClick={handleGoogleSignIn} className="btn btn-outline btn-success">Google</button>
+                    <button onClick={handelGitHubLogin} className="btn btn-outline btn-success">Github</button>
                     </div>
+                    
                 </div>
             </div>
         </div>

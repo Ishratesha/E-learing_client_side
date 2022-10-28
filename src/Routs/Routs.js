@@ -9,6 +9,10 @@ import CouresMap from '../Components/Course/CouresMap';
 import Coursedetails from '../Components/Course/Coursedetails';
 import Courseinfo from '../CourseLayout/Courseinfo';
 
+import CourseOne from '../Components/Course/CourseOne';
+
+
+
     export const routs = createBrowserRouter([
         {
             path:'/',
@@ -35,9 +39,9 @@ import Courseinfo from '../CourseLayout/Courseinfo';
                     loader: ({params}) => fetch(`http://localhost:5000/category/${params.id}`)
                 },
                 {
-                    path:'/course',
-                    loader:()=>fetch('http://localhost:5000/coursedetails'),
-                    element:<Courseinfo></Courseinfo>
+                    path:'/course/:_id',
+                    loader:({params})=>fetch(`http://localhost:5000/course/${params._id}`),
+                    element:<CourseOne></CourseOne>
                     // <CourseMap>
                 },
                 {

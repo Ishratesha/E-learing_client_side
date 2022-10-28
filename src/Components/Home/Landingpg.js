@@ -1,22 +1,26 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Features from './Features';
+import Priceing from './Priceing';
 
 const Landingpg = () => {
     return (
         <div>
       {/* landing page */}
-      <div className="hero min-h-screen" style={{ backgroundImage: `url("https://placeimg.com/1000/800/arch")` }}>
+      <div className="hero min-h-screen" style={{ backgroundImage: `url("https://static.vecteezy.com/system/resources/thumbnails/000/523/378/small/webde.jpg")` }}>
   <div className="hero-overlay bg-opacity-60"></div>
   <div className="hero-content text-center text-neutral-content">
     <div className="max-w-md">
       <h1 className="mb-5 text-5xl font-bold">Hello there</h1>
-      <p className="mb-5">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
-      <button className="btn btn-primary">Get Started</button>
+      <p className="mb-5">Our goal is to create the best possible coding school at the cost of a gym membership. If we succeed with this, it will give anyone who wants to become a software developer a realistic shot at succeeding. Regardless of where they live and the size of their wallets.</p>
+     <Link to = "/course">  <button className="btn btn-primary">Get Started</button></Link>
     </div>
   </div>
 </div>      
   
-
+<div>
+<Features></Features>
+</div>
 
 {/* tack info */}
 <div>
@@ -51,7 +55,7 @@ const Landingpg = () => {
   
 </div>
 <div>
-    <Features></Features>
+<Priceing></Priceing>
 </div>
 </div>
         </div>
