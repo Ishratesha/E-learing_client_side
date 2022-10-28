@@ -12,6 +12,8 @@ import Courseinfo from '../CourseLayout/Courseinfo';
 import CourseOne from '../Components/Course/CourseOne';
 import Checkout from '../Components/Checkout/Checkout';
 import Privaterout from '../Components/Prouter/Privaterout';
+import Notfound from '../Components/404/Notfound';
+import Blog from '../Components/Course/Blog';
 
 
 
@@ -57,6 +59,14 @@ import Privaterout from '../Components/Prouter/Privaterout';
                 {
                     path:'/checkout',
                     element:<Privaterout><Checkout></Checkout></Privaterout>
+                },
+                {
+                    path:'/blog',
+                    element:<Blog></Blog>
+                },
+                {
+                    path:'/*',
+                    element:<Notfound></Notfound>
                 },
             ]
 
